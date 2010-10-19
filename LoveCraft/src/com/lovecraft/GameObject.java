@@ -5,8 +5,6 @@ public abstract class GameObject {
 	protected String description = "";
 	protected String objectName = "";
 
-	
-	
 	public String getDescription() {
 		System.out.println(description);
 		return description;
