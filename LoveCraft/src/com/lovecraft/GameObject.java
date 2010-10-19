@@ -3,11 +3,15 @@ package com.lovecraft;
 public abstract class GameObject {
 	
 	protected String description;
+	protected String objectName;
 	
-	public String getItemDescription() {
+	
+	public String getDescription() {
 		return description;
 	}
 	
-	
+	public String getName() {
+		return objectName;
+	}
 
 }
