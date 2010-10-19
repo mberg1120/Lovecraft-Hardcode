@@ -13,5 +13,7 @@ public abstract class GameObject {
 	public String getName() {
 		return objectName;
 	}
+	
+	public abstract boolean useObject();
 
 }
