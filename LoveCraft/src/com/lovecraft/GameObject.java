@@ -14,6 +14,10 @@ public abstract class GameObject {
 		return objectName;
 	}
 	
+//	 can the object be used with the given parameters?
+//	 i.e. can torch be used with fire to create light?
+	 
 	public abstract boolean useObject();
+	
 
 }

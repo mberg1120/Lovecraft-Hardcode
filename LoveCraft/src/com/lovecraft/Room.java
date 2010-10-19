@@ -1,6 +1,10 @@
 package com.lovecraft;
 
+import java.util.Vector;
+
 public class Room extends GameObject {
+	
+	Vector roomContents = new Vector();
 
 	@Override
 	public boolean useObject() {
@@ -11,6 +15,14 @@ public class Room extends GameObject {
 		// when the objects are used with each other.
 		
 		return false;
+	}
+	
+	public void roomContents() {
+		getName();
+		System.out.println("Contents of " + objectName + ":");
+		for (int i = 0; i < roomContents.size(); i++) {
+			System.out.println("	" + "-" + roomContents.get(i));
+		}
 	}
 
 }
