@@ -4,7 +4,8 @@ import java.util.Vector;
 
 public class Room extends GameObject {
 	
-	Vector roomContents = new Vector();
+	Vector roomInventory = new Vector();
+	Inventory room = new Inventory();
 
 	@Override
 	public boolean useObject() {
@@ -20,8 +21,8 @@ public class Room extends GameObject {
 	public void roomContents() {
 		getName();
 		System.out.println("Contents of " + objectName + ":");
-		for (int i = 0; i < roomContents.size(); i++) {
-			System.out.println("	" + "-" + roomContents.get(i));
+		for (int i = 0; i < roomInventory.size(); i++) {
+			System.out.println("	" + "-" + roomInventory.get(i));
 		}
 	}
 
