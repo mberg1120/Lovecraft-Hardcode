@@ -1,6 +1,8 @@
 package com.lovecraft;
 
 public abstract class GameObject {
+	static Inventory playerInventory = new Inventory();
+	static Inventory roomInventory = new Inventory();
 	
 	protected String description = "";
 	protected String objectName = "";

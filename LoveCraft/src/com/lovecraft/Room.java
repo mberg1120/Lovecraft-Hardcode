@@ -5,9 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Room extends GameObject {
-	
-	Inventory room = new Inventory();
-	Vector roomInventory = new Vector();
+
 	String Name;
 	String Key = "hi2u";
 	public Room(String name)
@@ -25,10 +23,17 @@ public class Room extends GameObject {
 		
 		return false;
 	}
-	public boolean dropItem()
+	public static void dropItem(String name)
 	{
-		roomInventory.add(Key);
-		return false;
+		if(playerInventory.contains(name))
+		{
+			roomInventory.add(name);
+			playerInventory.remove(name);
+			System.out.println("You have removed the item from your inventory, and it is now lying on the ground.");
+		}
+		else
+			System.out.println("You attempted to remove an Item you do not have.");
+		return;
 	}
 	public void roomContents() {
 		getName();
@@ -36,6 +41,27 @@ public class Room extends GameObject {
 		for (int i = 0; i < roomInventory.size(); i++) {
 			System.out.println("	" + "-" + roomInventory.get(i));
 		}
+	}
+	public void itemsInRoom()
+	{
+		roomInventory.room();
+	}
+	public static void addItem(String item)
+	{
+		if(roomInventory.contains(item))
+		{
+			roomInventory.remove(item);
+			playerInventory.add(item);
+			System.out.println("The item is now in your inventory.");
+		}
+		else
+			System.out.print("You have attempted to pick up an item that is not in this room.");
+		
+		return;
+	}
+	public static void initialItem(String name)
+	{
+		roomInventory.add(name);
 	}
 //	public static void moveTo(int x, int y)
 //	{																			
@@ -69,7 +95,7 @@ public class Room extends GameObject {
 	@Override
 	public String toString()
 	{
-		return Name + Key;
+		return Name ;
 	}
 
 }

@@ -10,9 +10,13 @@ public class Client
 		int x = 1;
 		// Input variable.
 		String userInput;
+		String Key = "There is a Key on the ground... It may be useful in the future";
+		String skeletonKey = "This is a Skeleton Key... It will be useful in the future.";
+		String lamp = "This lamp, when used with fuel and a match will light up the Cave.";
+		String match = "This match, when used with fuel and a lamp, will light up the Cave.";
 		// Creates a boolean to be use with the DoWhile loop later
 		boolean keepGoing = true;
-		//Sets up an array of the Room obbject, and will allow us
+		//Sets up an array of the Room object, and will allow us
 		//to go from north south east west and set up specific items 
 		//for specific rooms (also allowing drop and take from room). 
 		ArrayList<Room> Rooms = new ArrayList<Room>();
@@ -25,6 +29,9 @@ public class Client
 		Rooms.add(B2);
 		Rooms.add(B1);
 		System.out.println(Rooms.get(0));
+		A1.initialItem(Key);
+		
+		
 		
 		// Prints the introduction to the user.
 		System.out.println("Welcome user, this is Project Love Craft... You have found yourself lying on the ground," +
@@ -92,13 +99,37 @@ public class Client
 				System.out.println(Rooms.get(x));
 			System.out.println("You went West");
 		}
-		else if (userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
+		else if (userInput.equals("take key") || userInput.equals("pick up key") || userInput.equals("pickup key") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
 		{
-			
+			A1.addItem(Key);
 		}
-		else if (userInput.equals("drop"))
+		else if (userInput.equals("take skeleton key") || userInput.equals("pick up skeleton key") || userInput.equals("pickup skeleton key") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup") )
 		{
-			
+			Room.addItem(skeletonKey);
+		}
+		else if (userInput.equals("take lamp") || userInput.equals("pick up lamp") || userInput.equals("pickup lamp") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
+		{
+			Room.addItem(lamp);
+		}
+		else if (userInput.equals("take match") || userInput.equals("pick up match") || userInput.equals("pickup match") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
+		{
+			Room.addItem(match);
+		}
+		else if (userInput.equals("drop key") || userInput.equals("drop"))
+		{
+			A1.dropItem(Key);
+		}
+		else if(userInput.equals("drop skeleton key") || userInput.equals("drop"))
+		{
+			Room.dropItem(skeletonKey);
+		}
+		else if(userInput.equals("drop lamp") ||userInput.equals("drop"))
+		{
+			Room.dropItem(lamp);
+		}
+		else if(userInput.equals("drop match") || userInput.equals("drop"))
+		{
+			Room.dropItem(match);
 		}
 		else if (userInput.equals("use"))
 		{
