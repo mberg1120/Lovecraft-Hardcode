@@ -14,5 +14,16 @@ public class Item extends GameObject {
 		return false;
 	}
 	
+	public void pickUpItem(){
+		if (itemInRoom == true) {
+			playerInventory.add(objectName);
+		}
+	}
+	
+	public void dropItem() {
+		if (itemInRoom != true) {
+			playerInventory.remove(objectName);
+		}
+	}
 
 }

@@ -23,7 +23,7 @@ public class Inventory {
 		else
 			item = false;
 		return item;
-	}
+	} 
 	public int size()
 	{
 		return inventory.size();
