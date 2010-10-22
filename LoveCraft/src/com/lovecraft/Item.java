@@ -28,5 +28,11 @@ public class Item extends GameObject {
 			itemInRoom = true;
 		}
 	}
+	
+	public String lookItem(String objectName) {
+		getDescription(objectName);
+		System.out.println(description);
+		return objectName;
+	}
 
 }
