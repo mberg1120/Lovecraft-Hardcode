@@ -1,6 +1,18 @@
 package com.lovecraft;
 import java.util.Scanner;
 import java.util.ArrayList;
+/**
+ * 
+ * @author Michael
+ * @author Steven
+ * @author Nathan
+ * @author Kellie
+ * @version 1.11
+ * @comments This is clearly not the completed version, but I am getting close. Should be done tomorrow.
+ * @ToDo Use command finished (shouldn't be difficult) - Movement(including doors/walls/turning on lamp) - And... I believe that's all. 
+ *
+ *
+ */
 
 public class Client 
 {
@@ -14,6 +26,10 @@ public class Client
 		String skeletonKey = "This is a Skeleton Key... It will be useful in the future.";
 		String lamp = "This lamp, when used with fuel and a match will light up the Cave.";
 		String match = "This match, when used with fuel and a lamp, will light up the Cave.";
+		Item.setDescription("key", "As you look at the key, you can tell it is rather shiny.");
+		Item.setDescription("skeleton key", "This key is more unique than the other one. It has a skeleton head on it, and it is clear it will be useful.");
+		Item.setDescription("match", "Perhaps you should combine this with a lamp and some fuel?");
+		Item.setDescription("lamp", "If you add fuel and a match, this will probably light up the Cave.");
 		// Creates a boolean to be use with the DoWhile loop later
 		boolean keepGoing = true;
 		//Sets up an array of the Room object, and will allow us
@@ -134,6 +150,22 @@ public class Client
 		else if (userInput.equals("use"))
 		{
 			
+		}
+		else if (userInput.equals("look key"))
+		{
+			Item.lookItem("key");
+		}
+		else if (userInput.equals("look skeleton key"))
+		{
+			Item.lookItem("skeleton key");
+		}
+		else if (userInput.equals("look lamp"))
+		{
+			Item.lookItem("lamp");
+		}
+		else if (userInput.equals("look match"))
+		{
+			Item.lookItem("match");
 		}
 		else if (userInput.equals("i") || userInput.equals("inventroy"))
 		{

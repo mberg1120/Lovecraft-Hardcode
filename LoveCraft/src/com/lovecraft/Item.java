@@ -3,7 +3,6 @@ package com.lovecraft;
 import java.util.Vector;
 
 public class Item extends GameObject {
-	protected boolean itemInRoom = true;
 
 	@Override
 	public boolean useObject() {
@@ -13,17 +12,9 @@ public class Item extends GameObject {
 
 		return false;
 	}
-	
-	public void pickUpItem(){
-		if (itemInRoom == true) {
-			playerInventory.add(objectName);
-		}
-	}
-	
-	public void dropItem() {
-		if (itemInRoom != true) {
-			playerInventory.remove(objectName);
-		}
-	}
+	public static void lookItem(String objectName)
+	{
+		Item.getDescription(objectName);
+	 }
 
 }

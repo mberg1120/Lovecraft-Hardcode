@@ -1,32 +1,49 @@
 package com.lovecraft;
+import java.util.Vector;
 
 public abstract class GameObject {
 	static Inventory playerInventory = new Inventory();
 	static Inventory roomInventory = new Inventory();
 	
-	protected String description = "";
-	protected String objectName = "";
+	static String[][] Items = new String[5][6];
+	static int count = 0;
+	
+	protected static String description = "";
+	protected static String objectName = "";
 
-	public String getDescription(String objectName) {
-		System.out.println(description);
-		return description;
+//	public String getDescription(String name)
+//	{
+//		System.out.println(description);
+//		return description;
+//	}
+
+	public static void setDescription(String pName, String pDescription)
+	{
+		count++;
+		objectName = pName;
+		description = pDescription;
+		Items[count][count] = objectName;
+		Items[count][count+1] = description;
 	}
-	
-	public void setDescription(String pDescription){
-		if (pDescription != null) {
-			description = pDescription;
+
+	public static String getDescription(String name)
+	{
+		name = name.toLowerCase();
+		if(playerInventory.contains(name))
+		{
+			for (int i = 1; i <= count; i++)
+			{
+				if(Items[i][i].equals(name))
+				{
+					System.out.println(Items[i][i+1]);
+				}
+				else
+					System.out.println("Breakpoint " + i);
+			}
 		}
-	}
-	
-	public String getName() {
-		System.out.println(objectName);
-		return objectName;
-	}
-	
-	public void setName(String pName) {
-		if (pName != null) {
-			objectName = pName;
-		}
+		else
+			System.out.println("I apologize, but you can only look at items in your inventory.");
+		return name;
 	}
 	
 	
