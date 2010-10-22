@@ -8,7 +8,12 @@ public class Room extends GameObject {
 	
 	Inventory room = new Inventory();
 	Vector roomInventory = new Vector();
-	static String[][] move = new String[20][20];
+	String Name;
+	String Key = "hi2u";
+	public Room(String name)
+	{
+		Name = name;
+	}
 
 	@Override
 	public boolean useObject() {
@@ -20,7 +25,11 @@ public class Room extends GameObject {
 		
 		return false;
 	}
-	
+	public boolean dropItem()
+	{
+		roomInventory.add(Key);
+		return false;
+	}
 	public void roomContents() {
 		getName();
 		System.out.println("Contents of " + objectName + ":");
@@ -28,30 +37,10 @@ public class Room extends GameObject {
 			System.out.println("	" + "-" + roomInventory.get(i));
 		}
 	}
-	public static void moveTo(int x, int y)
-	{
-		move[0][0] = "You are in the original room, you may go South or East.";
-		move[1][0] = "One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air.";
-		move[2][0] ="";
-		move[0][1] ="One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air.";
-		move[0][2] ="";
-		move[0][3] ="";
-		move[0][4] ="";
-		move[0][5] ="";
-		move[1][1] ="One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air.";
-		move[1][2] ="";
-		move[2][1] ="";
-		move[2][2] ="";
-		move[3][1] ="";
-		move[3][2] ="";
-		move[3][4] ="";
-		move[3][5] ="";
-		move[1][5] ="";
-		move[2][5] ="";
-		move[4][4] ="";
-																			
-		System.out.println(move[x][y]);
-	}
+//	public static void moveTo(int x, int y)
+//	{																			
+//		System.out.println(move[x][y]);
+//	}
 	public static void Chasm(Scanner scan)
 	{
 		boolean keepGoing = true;
@@ -76,6 +65,11 @@ public class Room extends GameObject {
 				System.out.println("As you continue onward, darkness still surrounds you. It seems no progress has been made. " +
 						"\nYou may go North, South, East or West.");
 		}while(keepGoing == true);
+	}
+	@Override
+	public String toString()
+	{
+		return Name + Key;
 	}
 
 }

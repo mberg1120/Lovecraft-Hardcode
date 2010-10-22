@@ -1,17 +1,31 @@
 package com.lovecraft;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Client 
 {
 	public static void main(String[] args)
 	{
 		// Creates the grid variables used to go from room to room.
-		int x = 0;
-		int y = 0;
+		int x = 1;
 		// Input variable.
 		String userInput;
 		// Creates a boolean to be use with the DoWhile loop later
 		boolean keepGoing = true;
+		//Sets up an array of the Room obbject, and will allow us
+		//to go from north south east west and set up specific items 
+		//for specific rooms (also allowing drop and take from room). 
+		ArrayList<Room> Rooms = new ArrayList<Room>();
+		Room A1 = new Room("Start");
+		Room B1 = new Room("B1");
+		Room A2 = new Room("A2");
+		Room B2 = new Room("B2");
+		Rooms.add(A1);
+		Rooms.add(A2);
+		Rooms.add(B2);
+		Rooms.add(B1);
+		System.out.println(Rooms.get(0));
+		
 		// Prints the introduction to the user.
 		System.out.println("Welcome user, this is Project Love Craft... You have found yourself lying on the ground," +
 				"\nand it  appears you have a bump on the back of your head. As you look around, you only " +
@@ -32,50 +46,50 @@ public class Client
 		}
 		else if(userInput.equals("north") || userInput.equals("n") || userInput.equals("go north"))
 		{
-			y--;
-			if(x < 3 && x >  0 && y < 5 && y > 2)
+			x -= 11;
+			if(x == 25 || x == 26 || x == 36 || x == 37)
 			{
 				Room.Chasm(scan);
-				y++;
+				x += 11;
 			}
 			else
-				Room.moveTo(x, y);
+				System.out.println(Rooms.get(x));
 			System.out.println("You went North");
 		}
 		else if(userInput.equals("s") || userInput.equals("south") || userInput.equals("go south"))
 		{
-			y++;
-			if(x < 3 && x >  0 && y < 5 && y > 2)
+			x += 11;
+			if(x == 25 || x == 26 || x == 36 || x == 37)
 			{
 				Room.Chasm(scan);
-				y--;
+				x -= 11;
 			}
 			else
-				Room.moveTo(x, y);
+				Rooms.get(x);
 			System.out.println("You went South");
 		}
 		else if(userInput.equals("e") || userInput.equals("east") || userInput.equals("go east"))
 		{
 			x++;
-			if(x < 3 && x >  0 && y < 5 && y > 2)
+			if(x == 25 || x == 26 || x == 36 || x == 37)
 			{
 				Room.Chasm(scan);
 				x--;
 			}
 			else
-				Room.moveTo(x, y);
+				System.out.println(Rooms.get(x));
 			System.out.println("You went East");
 		}
 		else if(userInput.equals("w") || userInput.equals("west") || userInput.equals("go west"))
 		{
 			x--;
-			if(x < 3 && x >  0 && y < 5 && y > 2)
+			if(x == 25 || x == 26 || x == 36 || x == 37)
 			{
 				Room.Chasm(scan);
 				x++;
 			}
 			else
-				Room.moveTo(x, y);
+				System.out.println(Rooms.get(x));
 			System.out.println("You went West");
 		}
 		else if (userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
@@ -96,7 +110,7 @@ public class Client
 		}
 		else
 			System.out.println("You seem to have used an incorrect command, or you have added an extra space.");
-		if(x == 5 && y == 0)
+		if(x == 5)
 			keepGoing = false;
 		}while(keepGoing == true);
 		// Prints the end dialogue
