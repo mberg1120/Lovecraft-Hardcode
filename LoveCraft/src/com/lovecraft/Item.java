@@ -16,5 +16,4 @@ public class Item extends GameObject {
 	{
 		Item.getDescription(objectName);
 	 }
-
 }

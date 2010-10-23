@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<itemList>
+	<item>
+		<name>key</name>
+		<desc>Shiny</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+
+	<item>
+		<name>skeleton key</name>
+		<desc>Skeleton Key</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+
+	<item>
+		<name>lamp</name>
+		<desc>Lamp</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+
+	<item>
+		<name>match</name>
+		<desc>Match</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+	<item>
+		<name>Fuel</name>
+		<desc>Fuel</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+	<item>
+		<name>Relic</name>
+		<desc>Shiny</desc>
+		<descFloor>You see it on the ground</descFloor>
+	</item>
+</itemList>

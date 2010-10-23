@@ -3,7 +3,6 @@ import java.util.Vector;
 
 public abstract class GameObject {
 	static Inventory playerInventory = new Inventory();
-	static Inventory roomInventory = new Inventory();
 	
 	static String[][] Items = new String[5][6];
 	static int count = 0;
@@ -46,7 +45,15 @@ public abstract class GameObject {
 		return name;
 	}
 	
-	
+	public static void inventoryContents() 
+	{
+//		getName();
+		System.out.println("Contents of " + objectName + ":");
+		for (int i = 0; i < playerInventory.size(); i++) {
+			System.out.println("	" + "-" + playerInventory.get(i));
+		}
+	}
+
 	
 //	 can the object be used with the given parameters?
 //	 i.e. can torch be used with fire to create light?

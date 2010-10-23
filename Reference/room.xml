@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<roomList>
+	<room>
+		<name>A1</name>
+		<desc>start</desc>
+		<itemList>key</itemList>
+		<north>#</north>
+		<east>A2</east>
+		<south>B1</south>
+		<west>#</west>
+	</room>
+
+	<room>
+		<name>A2</name>
+		<desc>A2</desc>
+		<itemList>skeleton key</itemList>
+		<north>#</north>
+		<east>#</east>
+		<south>B2</south>
+		<west>A1</west>
+	</room>
+
+	<room>
+		<name>B1</name>
+		<desc>B1</desc>
+		<itemList>lamp</itemList>
+		<north>A1</north>
+		<east>B2</east>
+		<south>#</south>
+		<west>#</west>
+	</room>
+
+	<room>
+		<name>B2</name>
+		<desc>B2</desc>
+		<itemList>match</itemList>
+		<north>A2</north>
+		<east>#</east>
+		<south>#</south>
+		<west>B1</west>
+	</room>
+</roomList>

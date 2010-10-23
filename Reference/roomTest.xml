@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="roomName" type="xs:string" />
+        <xs:element name="itemList" type="xs:string" />
+        <xs:element name="north" type="xs:string" />
+        <xs:element name="east" type="xs:string" />
+        <xs:element name="south" type="xs:string" />
+        <xs:element name="west" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

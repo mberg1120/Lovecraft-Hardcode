@@ -22,7 +22,7 @@ public class Client
 		int x = 1;
 		// Input variable.
 		String userInput;
-		String Key = "There is a Key on the ground... It may be useful in the future";
+		String key = "There is a Key on the ground... It may be useful in the future";
 		String skeletonKey = "This is a Skeleton Key... It will be useful in the future.";
 		String lamp = "This lamp, when used with fuel and a match will light up the Cave.";
 		String match = "This match, when used with fuel and a lamp, will light up the Cave.";
@@ -45,7 +45,7 @@ public class Client
 		Rooms.add(B2);
 		Rooms.add(B1);
 		System.out.println(Rooms.get(0));
-		A1.initialItem(Key);
+		A1.initialItem(key);
 		
 		
 		
@@ -63,6 +63,8 @@ public class Client
 		do{
 		userInput = scan.nextLine();
 		userInput.toLowerCase();
+		String word = userInput.substring(0, 4);
+		String rest = userInput.substring(5);
 		if(userInput.equals("go") )
 		{
 			System.out.println("Go where?");
@@ -115,45 +117,23 @@ public class Client
 				System.out.println(Rooms.get(x));
 			System.out.println("You went West");
 		}
-		else if (userInput.equals("take key") || userInput.equals("pick up key") || userInput.equals("pickup key") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
+		else if (word.equals("take") || word.equals("pick up") || word.equals("pickup"))
 		{
-			A1.addItem(Key);
+			
+			System.out.println(rest);
+			A1.addItem(rest);
 		}
-		else if (userInput.equals("take skeleton key") || userInput.equals("pick up skeleton key") || userInput.equals("pickup skeleton key") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup") )
+		else if (word.equals("drop"))
 		{
-			Room.addItem(skeletonKey);
-		}
-		else if (userInput.equals("take lamp") || userInput.equals("pick up lamp") || userInput.equals("pickup lamp") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
-		{
-			Room.addItem(lamp);
-		}
-		else if (userInput.equals("take match") || userInput.equals("pick up match") || userInput.equals("pickup match") || userInput.equals("take") || userInput.equals("pick up") || userInput.equals("pickup"))
-		{
-			Room.addItem(match);
-		}
-		else if (userInput.equals("drop key") || userInput.equals("drop"))
-		{
-			A1.dropItem(Key);
-		}
-		else if(userInput.equals("drop skeleton key") || userInput.equals("drop"))
-		{
-			Room.dropItem(skeletonKey);
-		}
-		else if(userInput.equals("drop lamp") ||userInput.equals("drop"))
-		{
-			Room.dropItem(lamp);
-		}
-		else if(userInput.equals("drop match") || userInput.equals("drop"))
-		{
-			Room.dropItem(match);
+			A1.dropItem(rest);
 		}
 		else if (userInput.equals("use"))
 		{
 			
 		}
-		else if (userInput.equals("look key"))
+		else if (word.equals("look"))
 		{
-			Item.lookItem("key");
+			Item.lookItem(rest);
 		}
 		else if (userInput.equals("look skeleton key"))
 		{
@@ -169,7 +149,7 @@ public class Client
 		}
 		else if (userInput.equals("i") || userInput.equals("inventroy"))
 		{
-//			Item.inventoryContents();
+			Room.inventoryContents();
 		}
 		else
 			System.out.println("You seem to have used an incorrect command, or you have added an extra space.");
