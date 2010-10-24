@@ -18,6 +18,10 @@ import java.util.StringTokenizer;
 
 public class Client
 {
+	static Room currentRoom;
+	static boolean fuel = false;
+	static boolean lamp = false;
+	static Player ourPlayer = new Player();
 	public static void main(String[] args)
 	{
 		XMLReader reader = new XMLReader();
@@ -37,7 +41,6 @@ public class Client
 		*/
 		// Creates a boolean to be use with the DoWhile loop later
 		boolean keepGoing = true;
-		Player ourPlayer = new Player();
 		/*
 		 * Below lines were used in previous version and are no longer needed
 		 * 
@@ -62,7 +65,7 @@ public class Client
 //		B2.north=A2;
 //		B2.west = B1;	*/	
 		
-		Room currentRoom = reader.XML();
+		currentRoom = reader.XML();
 		
 		// Prints the introduction to the user.
 		System.out.println("Welcome user, this is Project Love Craft... You have found yourself lying on the ground," +
@@ -84,12 +87,17 @@ public class Client
 		{
 			System.out.println("bad player! enter a command!");
 			printMenu();
+			userInput = scan.nextLine();
+			userInput.toLowerCase();
+			tokenz = new StringTokenizer(userInput);
 		}
 		// these have been converted to lower case, so equalsIgnoreCase is unnecessary
 		String command = tokenz.nextToken();
 		String operand = "nope";
 		if(tokenz.hasMoreTokens())
 			operand = tokenz.nextToken();
+		while(tokenz.hasMoreTokens()) //Skeleton key, or if the user wants to add more words for some reason.
+			operand += " " + tokenz.nextToken();
 		command.toLowerCase();
 		operand.toLowerCase();
 		
@@ -97,43 +105,19 @@ public class Client
 		{
 			if(operand.equals("north")||operand.equals("n"))
 			{
-				if(currentRoom.north == null || currentRoom.north == currentRoom)
-					System.out.println("you can't go north!");
-				else
-				{
-					currentRoom = currentRoom.north;
-					currentRoom.roomInventory.inventoryDescriptions();
-				}
+				move(currentRoom.north, "North");
 			}
 			if(operand.equals("east")||operand.equals("e"))
 			{
-				if(currentRoom.east == null || currentRoom.east == currentRoom)
-					System.out.println("you can't go east!");
-				else
-				{
-					currentRoom = currentRoom.east;
-					currentRoom.roomInventory.inventoryDescriptions();
-				}
+				move(currentRoom.east, "East");
 			}
 			if(operand.equals("south")||operand.equals("s"))
 			{
-				if(currentRoom.south == null || currentRoom.south == currentRoom)
-					System.out.println("you can't go south!");
-				else
-				{
-					currentRoom = currentRoom.south;
-					currentRoom.roomInventory.inventoryDescriptions();
-				}
+				move(currentRoom.south, "South");
 			}
 			if(operand.equals("west")||operand.equals("w"))
 			{
-				if(currentRoom.west == null || currentRoom.west == currentRoom)
-					System.out.println("you can't go west!");
-				else
-				{
-					currentRoom = currentRoom.west;
-					currentRoom.roomInventory.inventoryDescriptions();
-				}
+				move(currentRoom.west, "West");
 			}
 		}
 		else if(command.equals("take"))
@@ -142,11 +126,6 @@ public class Client
 			{
 				ourPlayer.playerInventory.add(currentRoom.roomInventory.getItemFromName(operand));
 				currentRoom.roomInventory.remove(operand);
-			}
-			// skeleton key
-			else if(tokenz.hasMoreTokens() && currentRoom.roomInventory.contains(operand +" " + tokenz.nextToken()))
-			{
-				ourPlayer.playerInventory.add(currentRoom.roomInventory.getItemFromName(operand));
 			}
 			else
 				System.out.println("That item doesn't exist in this room !");
@@ -158,18 +137,13 @@ public class Client
 				currentRoom.roomInventory.add(ourPlayer.playerInventory.getItemFromName(operand));
 				ourPlayer.playerInventory.remove((operand));
 			}
-			// skeleton key
-			else if(tokenz.hasMoreTokens() && ourPlayer.playerInventory.contains(operand +" " + tokenz.nextToken()))
-			{
-				currentRoom.roomInventory.add(ourPlayer.playerInventory.getItemFromName(operand));
-			}
 			else
 				System.out.println("You don't have that item !");
 		}
 		else if(command.equals("look"))
 		{
 			if(operand.equals("room"))
-				System.out.println(currentRoom.getDescription());
+				System.out.println(currentRoom.description);
 			else if (ourPlayer.playerInventory.contains(operand))
 				System.out.println(ourPlayer.playerInventory.getItemFromName(operand).itemDescription);
 			else
@@ -178,6 +152,47 @@ public class Client
 		else if (command.equals("use"))
 		{
 			// lamp/match/fuel
+			if(operand.equals("match") && ourPlayer.playerInventory.contains(operand) && fuel == true)
+				{
+				lamp = true;
+				System.out.println("You have used the match on the fuel.");
+				ourPlayer.playerInventory.remove(operand);
+				}
+			else if(operand.equals("fuel") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp"))
+			{
+				fuel = true;
+				System.out.println("You have put the fuel in the lamp.");
+				ourPlayer.playerInventory.remove(operand);
+			}
+			else if(operand.equals("key") && currentRoom.south.isLocked)
+			{
+				currentRoom.south.isLocked = false;
+				currentRoom = currentRoom.south;
+				System.out.println(currentRoom.description);
+				currentRoom.roomInventory.inventoryDescriptions();
+				
+			}
+			else if(operand.equals("key") && currentRoom.west.isLocked)
+			{
+				currentRoom.west.isLocked = false;
+				currentRoom = currentRoom.south;
+				System.out.println(currentRoom.description);
+				currentRoom.roomInventory.inventoryDescriptions();
+			}
+			else if(operand.equals("key") && currentRoom.east.isLocked)
+			{
+				currentRoom.east.isLocked = false;
+				currentRoom = currentRoom.south;
+				System.out.println(currentRoom.description);
+				currentRoom.roomInventory.inventoryDescriptions();
+			}
+			else if(operand.equals("key") && currentRoom.north.isLocked)
+			{
+				currentRoom.north.isLocked = false;
+				currentRoom = currentRoom.south;
+				System.out.println(currentRoom.description);
+				currentRoom.roomInventory.inventoryDescriptions();
+			}	
 		}
 	
 		else if (command.equals("i") || command.equals("inventory"))
@@ -186,10 +201,10 @@ public class Client
 		}
 		else
 		{
-			System.out.println("geez dude, read the command list");
+			System.out.println("Read the command list");
 			printMenu();
 		}
-		if(currentRoom.west == currentRoom && currentRoom.north == currentRoom && currentRoom.south == currentRoom)
+		if(currentRoom.Name.equals("Final"))
 			keepGoing = false;
 		}while(keepGoing == true);
 		// Prints the end dialogue
@@ -225,5 +240,39 @@ public class Client
 		System.out.println("-take * : pick-up an item");
 		System.out.println("-drop * : drop an item");
 		System.out.println("-use * : use an item");
+	}
+	public static void move(Room direction, String name)
+	{
+		if(direction.Name.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
+		{
+			currentRoom = direction;
+		}
+		else if(direction.Name.equals("Final Room") && ourPlayer.playerInventory.contains("skeleton key") == false)
+			System.out.println("You do not have a Skeleton Key in your inventory.");
+		else if(direction.isLit)
+		{
+			if(direction.isLocked)
+				System.out.println("I'm sorry, that room is locked and you can't go that way.");
+			else
+			{
+				if(direction == null || direction.equals(currentRoom))
+					System.out.println("You can't go " + name + "!");
+				else
+				{
+					currentRoom = direction;
+					System.out.println(currentRoom.description);
+					currentRoom.roomInventory.inventoryDescriptions();
+				}
+			}
+		}
+		else if(direction.isLit == false && lamp == true)
+		{
+			direction.isLit = true;		
+			currentRoom = direction;
+			System.out.println(currentRoom.description);
+			currentRoom.roomInventory.inventoryDescriptions();
+		}
+		else
+			System.out.println("You can't see  where you'e going, you may not proceed.");
 	}
 }

@@ -2,35 +2,29 @@
 <itemList>
 	<item>
 		<name>key</name>
-		<desc>Shiny</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<desc>As you look at the key, it is rather shiny and can be used for any generic door.</desc>
 	</item>
 
 	<item>
 		<name>skeleton key</name>
-		<desc>Skeleton Key</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<desc>This Key is unlike any other, it appears to have a skull on it and will only work with one door.</desc>
 	</item>
 
 	<item>
 		<name>lamp</name>
-		<desc>Lamp</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<desc>This is a lamp, if used with fuel and a match, will light up the Cave.</desc>
 	</item>
 
 	<item>
 		<name>match</name>
-		<desc>Match</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<desc>This is a match. If used with fuel and a lamp, it will light up the cave.</desc>
 	</item>
 	<item>
-		<name>Fuel</name>
-		<desc>Fuel</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<name>fuel</name>
+		<desc>This fuel, when used with a lamp and a match, will light up the cave.</desc>
 	</item>
 	<item>
-		<name>Relic</name>
-		<desc>Shiny</desc>
-		<descFloor>You see it on the ground</descFloor>
+		<name>relic</name>
+		<desc>This relic mesmorizes you... It has five words on it. "You just lost the game."</desc>
 	</item>
 </itemList>

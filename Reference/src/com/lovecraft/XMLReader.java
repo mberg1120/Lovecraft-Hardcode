@@ -20,9 +20,10 @@ public class XMLReader {
 	static Vector<Item> itemList = new Vector<Item>();
 	public Room XML()
 	{
+		boolean keepGoing = true;
 		try
 		{
-		File file2 = new File("C:\\Users\\Michael\\Desktop\\Lovecraft-Hardcode\\Reference\\item.xml"); // this should be changed to a relative path
+		File file2 = new File("item.xml"); // this should be changed to a relative path
 		DocumentBuilderFactory dbf2 = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db2 = dbf2.newDocumentBuilder();
 		Document doc2 = db2.parse(file2);
@@ -48,20 +49,9 @@ public class XMLReader {
 				fstNmElmntLst = fstElmnt.getElementsByTagName("desc");
 				fstNmElmnt = (Element) fstNmElmntLst.item(0);
 				fstNm = fstNmElmnt.getChildNodes();     
-				holder2 +=((Node) fstNm.item(0)).getNodeValue();
-
-				fstNmElmntLst = fstElmnt.getElementsByTagName("descFloor");
-				fstNmElmnt = (Element) fstNmElmntLst.item(0);
-				fstNm = fstNmElmnt.getChildNodes();     
-				holder2 += " " + ((Node) fstNm.item(0)).getNodeValue();
+				holder2 += ((Node) fstNm.item(0)).getNodeValue();
 				
-				StringTokenizer tokens = new StringTokenizer(holder2);
-				String desc = tokens.nextToken();
-				String descF = tokens.nextToken();
-				while(tokens.hasMoreTokens())
-					descF += " " + tokens.nextToken();
-				itemList.add(new Item(itemName, desc, descF));
-				System.out.println(itemName + " " + holder2);
+				itemList.add(new Item(itemName, holder2));
 			}
 		}
 		}catch (Exception e) {
@@ -69,7 +59,7 @@ public class XMLReader {
 			}
 		try
 		{
-			File file = new File("C:\\Users\\Michael\\Desktop\\Lovecraft-Hardcode\\Reference\\room.xml"); // this should be changed to a relative path
+			File file = new File("room.xml"); // this should be changed to a relative path
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(file);
@@ -91,11 +81,21 @@ public class XMLReader {
 					Element fstNmElmnt = (Element) fstNmElmntLst.item(0);
 					NodeList fstNm = fstNmElmnt.getChildNodes();     
 					String roomName = ((Node) fstNm.item(0)).getNodeValue();
-
-					fstNmElmntLst = fstElmnt.getElementsByTagName("desc");
+					
+					fstNmElmntLst = fstElmnt.getElementsByTagName("isLocked");
 					fstNmElmnt = (Element) fstNmElmntLst.item(0);
 					fstNm = fstNmElmnt.getChildNodes();     
 					holder +=((Node) fstNm.item(0)).getNodeValue();
+
+					fstNmElmntLst = fstElmnt.getElementsByTagName("isLit");
+					fstNmElmnt = (Element) fstNmElmntLst.item(0);
+					fstNm = fstNmElmnt.getChildNodes();     
+					holder += " " + ((Node) fstNm.item(0)).getNodeValue();
+					
+					fstNmElmntLst = fstElmnt.getElementsByTagName("desc");
+					fstNmElmnt = (Element) fstNmElmntLst.item(0);
+					fstNm = fstNmElmnt.getChildNodes();     
+					holder += " " + ((Node) fstNm.item(0)).getNodeValue();
 
 					fstNmElmntLst = fstElmnt.getElementsByTagName("north");
 					fstNmElmnt = (Element) fstNmElmntLst.item(0);
@@ -124,7 +124,6 @@ public class XMLReader {
 					
 					
 					
-					System.out.println(holder);
 
 //					/// this retrieves a list of items in the room, the itemXML hasn't been finished though
 //					   // so this will be applied after
@@ -146,9 +145,30 @@ public class XMLReader {
 
 		for(int i = 0; i<roomList.size(); i++)
 		{
+			keepGoing = true;
 			StringTokenizer tokenz = new StringTokenizer(roomList.get(i).holder);
 			// order is north, east, south, west
+			String locked = tokenz.nextToken();
+			if(locked.equals("true"))
+				roomList.get(i).isLocked = true;
+			else
+				roomList.get(i).isLocked = false;
+			String lit = tokenz.nextToken();
+			if(lit.equals("true"))
+				roomList.get(i).isLit = true;
+			else
+				roomList.get(i).isLit = false;
 			String desc = tokenz.nextToken();
+			do{		
+				if(desc.contains("#"))
+				{
+					keepGoing = false;
+					desc = desc.replace("#", "");
+					
+				}
+				else
+					desc += " " + tokenz.nextToken();
+			}while(keepGoing);
 			roomList.get(i).description = desc;
 			String north = tokenz.nextToken();
 			if(north.equals("#"))
@@ -200,7 +220,7 @@ public class XMLReader {
 	// it stop looking and return the room, if we don't find it return null
 	public static Room getRoomByName(String roomName)
 	{
-		for(int i=0; i< roomList.size(); i++)
+		for(int i=0; i < roomList.size(); i++)
 		{
 			if(roomList.get(i).Name.equals(roomName))
 				return roomList.get(i);
@@ -214,7 +234,7 @@ public class XMLReader {
 		for(int i = 0; i < itemList.size(); i++)
 		{
 			if(itemList.get(i).itemName.equals(itemName))
-				return new Item(itemList.get(i).itemName, itemList.get(i).itemDescription, itemList.get(i).floorDescription);
+				return new Item(itemList.get(i).itemName, itemList.get(i).itemDescription);
 		}
 		
 //		for(int i=0; i < itemList.size(); i++)

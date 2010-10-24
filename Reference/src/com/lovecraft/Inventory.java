@@ -42,7 +42,7 @@ public class Inventory {
 	{
 		for (int i = 0; i < inventory.size(); i++) 
 		{
-			System.out.println(inventory.get(i).itemDescription);
+			System.out.println(inventory.get(i).floorDescription);
 		}
 	}
 	public Item getItemFromName(String objectName)
