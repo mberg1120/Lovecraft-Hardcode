@@ -1,19 +1,17 @@
 package com.lovecraft;
 
-import java.util.Vector;
 
-public class Item extends GameObject {
+public class Item {
 
-	@Override
-	public boolean useObject() {
-
-		// logic needed to answer:
-		// can the combination of objects be used together?
-
-		return false;
-	}
-	public static void lookItem(String objectName)
+	String itemName;
+	String itemDescription;
+	String holder;
+	String floorDescription ;
+	
+	public Item(String name, String desc)
 	{
-		Item.getDescription(objectName);
-	 }
+		itemName = name;
+		itemDescription = desc;
+		floorDescription = "There is a " + name + " on the ground.";
+	}
 }
