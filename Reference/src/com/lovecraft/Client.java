@@ -22,6 +22,7 @@ public class Client
 	static boolean fuel = false;
 	static boolean lamp = false;
 	static Player ourPlayer = new Player();
+	static 	Scanner scan = new Scanner(System.in);
 	public static void main(String[] args)
 	{
 		XMLReader reader = new XMLReader();
@@ -74,7 +75,7 @@ public class Client
 				"\nOnce you go forth into this dungeon, you will find objects, it is your choice how to handle them. " +
 				"\nYou will have the ability to receive hints in each area, and your first hint is that you must type" +
 				"\n'go' and then the word North, West, East or South to move. Currently, you may only go east or south.");
-		Scanner scan = new Scanner(System.in);
+
 		StringTokenizer tokenz;
 		// DoWhile loop that will continue looping until the user reaches the end, and then it will
 		// terminate and continue forward. Most of the loop is self explanatory, will not need to comment
@@ -193,6 +194,8 @@ public class Client
 				System.out.println(currentRoom.description);
 				currentRoom.roomInventory.inventoryDescriptions();
 			}	
+			else
+				System.out.println("You either can't use that item, or do not have that item, or misspelled the item name.");
 		}
 	
 		else if (command.equals("i") || command.equals("inventory"))
@@ -243,7 +246,11 @@ public class Client
 	}
 	public static void move(Room direction, String name)
 	{
-		if(direction.Name.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
+		if(direction.Name.equals("Chasm"))
+		{
+			Chasm.fallIntoChasm(scan);
+		}
+		else if(direction.Name.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
 		{
 			currentRoom = direction;
 		}

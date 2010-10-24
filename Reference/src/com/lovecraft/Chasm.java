@@ -7,7 +7,7 @@ import java.util.Scanner;
  * i'm in your source code NOM'ing your ability to move
  */
 public class Chasm {
-	public void fallIntoChasm(Scanner scan)
+	public static void fallIntoChasm(Scanner scan)
 	{
 		boolean keepGoing = true;
 		Random generator = new Random();

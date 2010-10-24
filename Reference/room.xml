@@ -95,7 +95,7 @@
 	</room>
 	<room>
 		<name>C1</name>
-		<desc>This area seems to be different than the others, there are chains on the walls, and it is clear this space was used for torture. You may go North, South, or West. #</desc>
+		<desc>This area seems to be different than the others, there are chains on the walls, and it is clear this space was used for torture. You may go North, South, or East. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
