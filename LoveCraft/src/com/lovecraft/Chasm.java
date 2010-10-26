@@ -25,7 +25,8 @@ public class Chasm {
 						"\nStay a while and listen...");
 			else if (userInput.toLowerCase().contains("cow"))
 				System.out.println("There is no cow level...");
-			if(r == 0)
+
+			else if(r == 0)
 			{
 				System.out.println("You have managed to climb out of the chasm and returned to the Cave." +
 						"\nYou have returned to the room you were previously in." +

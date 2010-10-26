@@ -23,7 +23,7 @@ public class XMLReader {
 		boolean keepGoing = true;
 		try
 		{
-		File file2 = new File("item.xml"); // this should be changed to a relative path
+		File file2 = new File("item.xml");
 		DocumentBuilderFactory dbf2 = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db2 = dbf2.newDocumentBuilder();
 		Document doc2 = db2.parse(file2);
@@ -59,7 +59,7 @@ public class XMLReader {
 			}
 		try
 		{
-			File file = new File("room.xml"); // this should be changed to a relative path
+			File file = new File("room.xml");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(file);
@@ -207,7 +207,7 @@ public class XMLReader {
 					roomList.get(i).west=roomList.get(i);					
 			}
 			String item = tokenz.nextToken();
-			if(tokenz.hasMoreTokens())//skeleton key case
+			if(tokenz.hasMoreTokens()) //skeleton key case
 				item += " " + tokenz.nextToken();
 			if(item.equals("#"))
 				;

@@ -26,7 +26,7 @@
 
 	<room>
 		<name>A3</name>
-		<desc>This area has an unusual feel to it... You may go East, West or South. #</desc>
+		<desc>This area, which was previously dark, has an unusual aura about it... You may go East, West or South. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>flase</isLit>
@@ -49,7 +49,7 @@
 	</room>
 	<room>
 		<name>B1</name>
-		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. From here, you may go North or West, and if a light source you may go South. #</desc>
+		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. From here, you may go North or East, and if you have a light source you may go South. #</desc>
 		<itemList>lamp</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -95,7 +95,7 @@
 	</room>
 	<room>
 		<name>C1</name>
-		<desc>This area seems to be different than the others, there are chains on the walls, and it is clear this space was used for torture. You may go North, South, or East. #</desc>
+		<desc>This area, which was previously dark, has chains on the walls, and it is clear this space was used for torture. You may go North, South, or East. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
@@ -106,7 +106,7 @@
 	</room>
 	<room>
 		<name>C2</name>
-		<desc>This area is no different than your surroundings. I have a sneaky suspicion you don't want to go into the chasm to your South. Regardless, you can go North, West, East and there is a Chasm to your South. #</desc>
+		<desc>This area, which was previously dark, is very gloomy, just like your surroundings. I have a sneaky suspicion you don't want to go into the chasm to your South. Regardless, you can go North, West, East and there is a Chasm to your South. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
@@ -153,7 +153,8 @@
 	</room>
 	<room>
 		<name>E1</name>
-		<desc>You walk into another empty area, but you hear a growl, which appears to be coming from the Chasm below and to the East... Something is... living in there? You can go South or North. #</desc>
+		<desc>You walk into another empty area, but you hear a growl, which appears to be coming from the Chasm below and to the East... Something is... living in there? 
+You can go South or North. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -378,7 +379,7 @@
 
 	<room>
 		<name>A9</name>
-		<desc>You can see a door far off to the West, but the light is so dim now that you can't make out exactly what kind of door, or what is written on the walls anymore. I guess you'll have to trust your gut. You can go West or East.Gut? How ironic. I don't even appear to have guts anymore, let alone 2 eyes. I have 6 now... None of this makes any sense. #</desc>
+		<desc>You can see a door far off to the West, but the light is so dim now that you can't make out exactly what kind of door, or what is written on the walls anymore. I guess you'll have to trust your gut. You can go West or East. Gut? How ironic. I don't even appear to have guts anymore, let alone 2 eyes. I have 6 now... None of this makes any sense. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -389,7 +390,7 @@
 	</room>
 	<room>
 		<name>A8</name>
-		<desc>Light going even darker, the only clear thing is that you can see that door in the distance. You may go West or East. I'm angry now, and I will do whatever it takes to get out of here. #</desc>
+		<desc>Light getting even darker, the only clear thing is that you can see that door in the distance. You may go West or East. I'm angry now, and I will do whatever it takes to get out of here. #</desc>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
