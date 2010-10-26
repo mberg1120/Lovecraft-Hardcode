@@ -1,8 +1,5 @@
 package com.lovecraft;
-/*
- * XML interpreter source copied from 
- * http://www.java-tips.org/java-se-tips/javax.xml.parsers/how-to-read-xml-file-in-java.html
- */
+
 import java.io.File;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -13,7 +10,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
+/**
+ * This is the XML parser used for the code, and 
+ * takes the Room.XML and the Item.XML and makes them 
+ * rooms and items.
+ * @author Michael
+ * @author Steven
+ * @author Nathan
+ * 
+ */
 public class XMLReader {
 
 	static Vector<Room> roomList = new Vector<Room>();
@@ -121,16 +126,6 @@ public class XMLReader {
 					fstNmElmnt = (Element) fstNmElmntLst.item(0);
 					fstNm = fstNmElmnt.getChildNodes();     
 					holder += " "+((Node) fstNm.item(0)).getNodeValue();
-					
-					
-					
-
-//					/// this retrieves a list of items in the room, the itemXML hasn't been finished though
-//					   // so this will be applied after
-//					NodeList lstNmElmntLst = fstElmnt.getElementsByTagName("itemList");
-//					Element lstNmElmnt = (Element) lstNmElmntLst.item(0);
-//					NodeList lstNm = lstNmElmnt.getChildNodes();
-//					System.out.println("room item list: " + ((Node) lstNm.item(0)).getNodeValue());
 					 
 					roomList.add(new Room(roomName,holder));
 
@@ -216,8 +211,10 @@ public class XMLReader {
 		}
 		return roomList.get(0);
 	}
-	// look through every room for the name of the room we want to link to, if we find
-	// it stop looking and return the room, if we don't find it return null
+	/**
+	 *Grabs the rooms and returns the room that was made. Otherwise, returns null. 
+	 *@param roomName
+	 */
 	public static Room getRoomByName(String roomName)
 	{
 		for(int i=0; i < roomList.size(); i++)
@@ -229,6 +226,9 @@ public class XMLReader {
 		return null;
 	}
 	// returns a new item containing the name of the item specified
+	/**
+	 * Gets the item from the ArrayList and returns a new item. 
+	 */
 	public static Item getItemByName(String itemName)
 	{
 		for(int i = 0; i < itemList.size(); i++)

@@ -3,10 +3,15 @@ package com.lovecraft;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
- * i'm in your source code NOM'ing your ability to move
+/**
+ * @author Michael
+ * @comments This is the Chasm, where it takes the console and the user can't leave until the random number is modulated into 0. 
  */
 public class Chasm {
+	/**
+	 * Drops the player into the chasm. 
+	 * @param scan
+	 */
 	public static void fallIntoChasm(Scanner scan)
 	{
 		boolean keepGoing = true;

@@ -172,7 +172,9 @@ public class Client
 			System.out.println("To escape, type 'yes' 'y' or 'escape'.");
 		}while(keepGoing == true);
 	}
-	
+	/**
+	 * Prints the command menu to the user.
+	 */
 	public static void printMenu()
 	{
 		System.out.println("\nSupported commands:" +
@@ -182,7 +184,12 @@ public class Client
 		"\n-drop * : drop an item" +
 		"\n-use * : use an item");
 	}
-	
+	/**
+	 * Allows the user to move, and will print out
+	 * if the user can't go that way.
+	 * @param direction
+	 * @param name
+	 */
 	public static void move(Room direction, String name)
 	{
 		if(direction.Name.equals("Chasm"))
@@ -229,7 +236,10 @@ public class Client
 		else
 			System.out.println("You can't see where you're going, you may not proceed.");
 	}
-	
+	/**
+	 * Method that allows the user to use different items.
+	 * @param operand
+	 */
 	public static void use(String operand)
 	{
 		// This will use a match if the player has a match, and has fuel used.
