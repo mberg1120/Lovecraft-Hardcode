@@ -85,7 +85,7 @@ public class Inventory {
 			if(inventory.get(i).itemName.equals(objectName))
 				return inventory.get(i);
 		}
-		System.out.println("Inventory error! we were looking for " + objectName + " but couldn't find it");
+		System.out.println("Inventory error! We were looking for " + objectName + " but couldn't find it");
 		return null;
 	}
 

@@ -10,5 +10,6 @@ public abstract class GameObject {
 		
 	protected String description = "";
 	protected String objectName = "";
+	protected String description2 = "";
 
 }

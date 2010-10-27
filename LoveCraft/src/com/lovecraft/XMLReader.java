@@ -102,6 +102,11 @@ public class XMLReader {
 					fstNm = fstNmElmnt.getChildNodes();     
 					holder += " " + ((Node) fstNm.item(0)).getNodeValue();
 
+					fstNmElmntLst = fstElmnt.getElementsByTagName("desc2");
+					fstNmElmnt = (Element) fstNmElmntLst.item(0);
+					fstNm = fstNmElmnt.getChildNodes();     
+					holder += " " + ((Node) fstNm.item(0)).getNodeValue();
+					
 					fstNmElmntLst = fstElmnt.getElementsByTagName("north");
 					fstNmElmnt = (Element) fstNmElmntLst.item(0);
 					fstNm = fstNmElmnt.getChildNodes();     
@@ -159,12 +164,27 @@ public class XMLReader {
 				{
 					keepGoing = false;
 					desc = desc.replace("#", "");
-					
 				}
+				else if(desc.contains("\\"))
+					desc = desc.replace("\\", "\n");
 				else
 					desc += " " + tokenz.nextToken();
 			}while(keepGoing);
 			roomList.get(i).description = desc;
+			String desc2 = tokenz.nextToken();
+			keepGoing = true;
+			do{		
+				if(desc2.contains("#"))
+				{
+					keepGoing = false;
+					desc2 = desc2.replace("#", "");
+				}
+				else if(desc2.contains("\\"))
+					desc2 = desc2.replace("\\", "\n");
+				else
+					desc2 += " " + tokenz.nextToken();
+			}while(keepGoing);
+			roomList.get(i).description2 = desc2;
 			String north = tokenz.nextToken();
 			if(north.equals("#"))
 				roomList.get(i).north=roomList.get(i);

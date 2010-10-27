@@ -1,8 +1,26 @@
 <?xml version="1.0"?>
 <roomList>
 	<room>
+		<name>Start</name>
+		<desc>Welcome user, this is Project Love Craft... You have found yourself lying on the ground, 
+\and it  appears you have a bump on the back of your head. As you look around, you only
+\have 3 areas that are visible, and it appears you are stuck in a dungeon or cave of some sort.
+\Above you it is clear that you were thrown into this cave of sorts, as the nearest exit is 50 feet above you.
+\Once you go forth into this dungeon, you will find objects, it is your choice how to handle them.
+\You must type 'go' and then the word North, West, East or South to move. Currently, you may only go east or south. #</desc>
+		<desc2>#</desc2>
+		<itemList>#</itemList>
+		<isLocked>false</isLocked>
+		<isLit>true</isLit>
+		<north>#</north>
+		<east>A2</east>
+		<south>B1</south>
+		<west>#</west>
+	</room>
+	<room>
 		<name>A1</name>
 		<desc>You are back at the original room. You may go South or East. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -14,7 +32,8 @@
 
 	<room>
 		<name>A2</name>
-		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. You may go West or South. To the East it appears there is a  path if you have a light source. #</desc>
+		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. \You may go West or South. To the East it appears there is a  path if you have a light source. #</desc>
+		<desc2>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. \You may go East, South, or West. #</desc2>
 		<itemList>fuel</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -27,6 +46,7 @@
 	<room>
 		<name>A3</name>
 		<desc>This area, which was previously dark, has an unusual aura about it... You may go East, West or South. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>flase</isLit>
@@ -39,6 +59,7 @@
 	<room>
 		<name>A4</name>
 		<desc>This appears to be a corner in the cave... You see chains on the ground and blood dripping from the roof. You may go South or West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -50,6 +71,7 @@
 	<room>
 		<name>B1</name>
 		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. From here, you may go North or East, and if you have a light source you may go South. #</desc>
+		<desc2>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. \You may go East, South, or West. #</desc2>
 		<itemList>lamp</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -62,6 +84,7 @@
 	<room>
 		<name>B2</name>
 		<desc>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. You may either go North or West, or if  there is a light source you may go South and East. #</desc>
+		<desc2>One of the three originally lit rooms, it seems to be wreaking, and there is a high volume of humidity in the air. \You may go East, South, or West. #</desc2>
 		<itemList>match</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -74,6 +97,7 @@
 	<room>
 		<name>B3</name>
 		<desc>This room, which was previously dark, has an unusual aura to it... You may go North, South, East, or West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
@@ -85,9 +109,10 @@
 	<room>
 		<name>B4</name>
 		<desc>It appears you have reached a wall, which has chains all over it. You may either go North, South, or West. #</desc>
+		<desc2>#</desc2>
 		<itemList>relic</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>A4</north>
 		<east>#</east>
 		<south>C4</south>
@@ -96,6 +121,7 @@
 	<room>
 		<name>C1</name>
 		<desc>This area, which was previously dark, has chains on the walls, and it is clear this space was used for torture. You may go North, South, or East. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
@@ -107,6 +133,7 @@
 	<room>
 		<name>C2</name>
 		<desc>This area, which was previously dark, is very gloomy, just like your surroundings. I have a sneaky suspicion you don't want to go into the chasm to your South. Regardless, you can go North, West, East and there is a Chasm to your South. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>false</isLit>
@@ -119,9 +146,10 @@
 	<room>
 		<name>C3</name>
 		<desc>As you approach this area, you wonder how you even got yourself stuck down here...You may go West, North, East, and there is a Chasm to your South. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>B3</north>
 		<east>C4</east>
 		<south>Chasm</south>
@@ -131,9 +159,10 @@
 	<room>
 		<name>C4</name>
 		<desc>There is an awful stench in this area... There's nothing here for you. You can go West, North, or South. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>B4</north>
 		<east>#</east>
 		<south>D4</south>
@@ -143,9 +172,10 @@
 	<room>
 		<name>D1</name>
 		<desc>There is writing on the wall, though it can't be deciphered properly... You may only go North or South. There also appears to be a large chasm to the East. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>C1</north>
 		<east>Chasm</east>
 		<south>E1</south>
@@ -155,9 +185,10 @@
 		<name>E1</name>
 		<desc>You walk into another empty area, but you hear a growl, which appears to be coming from the Chasm below and to the East... Something is... living in there? 
 You can go South or North. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<skelLocked>false</skelLocked>
 		<north>D1</north>
 		<east>Chasm</east>
@@ -168,9 +199,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>F1</name>
 		<desc>You have reached an edge of the cave it appears, and there are more chains on the wall. Your options are to go North or East. #</desc>
+		<desc2>#</desc2>
 		<itemList>key</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>E1</north>
 		<east>F2</east>
 		<south>#</south>
@@ -180,9 +212,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>F2</name>
 		<desc>This area has one visible word on the wall 'run'. Interesting... Nonetheless, you may either go West or East, and there is also a Chasm to the North. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>Chasm</north>
 		<east>F3</east>
 		<south>#</south>
@@ -192,9 +225,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>F3</name>
 		<desc>This seems to be  another empty space, with random hieroglyphs on the wall... There is a Chasm to the North, and you may also go East or West #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>Chasm</north>
 		<east>F4</east>
 		<south>#</south>
@@ -203,9 +237,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>F4</name>
 		<desc>You seem to have reached an edge of the cave. This edge has one chain attached to a handcuff that has an arm inside it... With no body attached. You may either go North or West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>E4</north>
 		<east>#</east>
 		<south>#</south>
@@ -215,9 +250,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>E4</name>
 		<desc>There appears to be  hieroglyphs on the wall and the words 'Don't listen to the voices'. I wonder what it could mean... You may go North, South, or East, and there is also a Chasm to the West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>D4</north>
 		<east>E5</east>
 		<south>F4</south>
@@ -227,9 +263,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>D4</name>
 		<desc>This area has nothing more than what appears to be blood dripping from the walls... You may either proceed North or South. There also is a Chasm to the West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>C4</north>
 		<east>#</east>
 		<south>E4</south>
@@ -239,9 +276,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>E5</name>
 		<desc>As you proceed down the hallway, it is clear that this is the right way to go. You may go East or West. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>E6</east>
 		<south>#</south>
@@ -250,9 +288,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>E6</name>
 		<desc>There appears to be scratch marks on the ground, and a locked door to your South. You may go West, East, or North. There also appears to be a door to your South that can be unlocked.  #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>D6</north>
 		<east>E7</east>
 		<south>F6</south>
@@ -262,9 +301,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>D6</name>
 		<desc>In this room, you may only go South, and it appears to have been used as a solitary confinement cell. The door was ripped off its hinges and you can see blood and scratches on the wall. #</desc>
+		<desc2>#</desc2>
 		<itemList>key</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>#</east>
 		<south>E6</south>
@@ -274,9 +314,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>F6</name>
 		<desc>This room, previously locked, has a skeleton on the ground, with shackles attacked to its arms and legs. I wonder what happened to this person. You must go North to exit. #</desc>
+		<desc2>#</desc2>
 		<itemList>skeleton key</itemList>
 		<isLocked>true</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>E6</north>
 		<east>#</east>
 		<south>#</south>
@@ -286,9 +327,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>E7</name>
 		<desc>This hallway seems to go on forever... Maybe you will reach your escape? You may only go East or West. You think to yourself... How did I get here... What was the motive... Where am I going? #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>E8</east>
 		<south>#</south>
@@ -297,9 +339,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>E8</name>
 		<desc>This appears to be a corner of some sort, but it doesn't give much indication what has occurred. Your two options are North or West. You distinctly remember getting off work early to catch the Baseball game... Your girlfriend called and told you that she wanted you to bring home some groceries. You picked them up and decided to take the shortcut... #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>D8</north>
 		<east>#</east>
 		<south>#</south>
@@ -309,9 +352,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>D8</name>
 		<desc>Another corner, but now you can only go South or East. You remember a faint whisper in your ear as you were walking through your short cut... You can't recall the words, but you know you heard something. As you approached where the voice came from, you lost memory and woke up here... #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>D9</east>
 		<south>E8</south>
@@ -321,9 +365,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>D9</name>
 		<desc>This area is becoming darker, but your lamp is still lit... I wonder if this is actually the right way to go, or if we're falling into a trap. You may go West or East. As you look down, you see yourself... but not how you remembered looking. Your body looks... deformed. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>D10</east>
 		<south>#</south>
@@ -333,9 +378,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>D10</name>
 		<desc>There is only two ways to go... To the north, where there is a locked door, or to the west. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>C10</north>
 		<east>#</east>
 		<south>#</south>
@@ -344,9 +390,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>C10</name>
 		<desc>As you open the door, there appears to be another long hallway  with no end in sight. You may go North or South. You think you might be hallucinating, but it is clear now that your arms have changed shape into some sort of... wing? No, this can't be possible. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>true</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>B10</north>
 		<east>#</east>
 		<south>D10</south>
@@ -356,9 +403,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>B10</name>
 		<desc>Continuation of the hallway with readable text now, though it doesn't seem to be in English. 'Enjoy this time, do not be afraid, I will help you.' That's unusual, but nonetheless, you may go North or South. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>A10</north>
 		<east>#</east>
 		<south>C10</south>
@@ -368,9 +416,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>A10</name>
 		<desc>Another corner... This time with more writing in Hieroglyphs 'You are now a soul to the master.' You may go South, or West. How did I get here? What am I? Why does it appear that I am some sort of creature? I have... a wing... and what appears to be more deformities. Where am I going? #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>#</east>
 		<south>B10</south>
@@ -380,9 +429,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>A9</name>
 		<desc>You can see a door far off to the West, but the light is so dim now that you can't make out exactly what kind of door, or what is written on the walls anymore. I guess you'll have to trust your gut. You can go West or East. Gut? How ironic. I don't even appear to have guts anymore, let alone 2 eyes. I have 6 now... None of this makes any sense. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>A10</east>
 		<south>#</south>
@@ -391,9 +441,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>A8</name>
 		<desc>Light getting even darker, the only clear thing is that you can see that door in the distance. You may go West or East. I'm angry now, and I will do whatever it takes to get out of here. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>A9</east>
 		<south>#</south>
@@ -403,9 +454,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>A7</name>
 		<desc>Door is almost within arm's reach. You can go West or East. You see a large wooden object on the ground and pick it up without thinking. This will not end well for the people in your path. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>A8</east>
 		<south>#</south>
@@ -415,9 +467,10 @@ You can go South or North. #</desc>
 	<room>
 		<name>A6</name>
 		<desc>There is a Skeleton door to your West and you may also go East. Freedom is so close. If you have a Skeleton Key, you may open the door to escape. #</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
-		<isLit>true</isLit>
+		<isLit>false</isLit>
 		<north>#</north>
 		<east>A7</east>
 		<south>#</south>
@@ -427,6 +480,7 @@ You can go South or North. #</desc>
 	<room>
 		<name>Final</name>
 		<desc>#</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>
@@ -438,6 +492,7 @@ You can go South or North. #</desc>
 	<room>
 		<name>Chasm</name>
 		<desc>#</desc>
+		<desc2>#</desc2>
 		<itemList>#</itemList>
 		<isLocked>false</isLocked>
 		<isLit>true</isLit>

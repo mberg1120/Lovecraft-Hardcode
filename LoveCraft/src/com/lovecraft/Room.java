@@ -13,14 +13,15 @@ public class Room extends GameObject {
 	Inventory roomInventory; // this is a list of items that i have
 	boolean isLocked = false;
 	boolean isLit = true;
+	boolean isFirst = true;
 	/**
 	 * Calls/creates a new room with the parameter 'name'. 
 	 */
-	public Room(String name)
-	{
-		Name = name;
-		roomInventory = new Inventory(); // i need an empty inventory to add things to
-	}
+//	public Room(String name)
+//	{
+//		Name = name;
+//		roomInventory = new Inventory(); // i need an empty inventory to add things to
+//	}
 	/**
 	 * Creates or calls a new room with the parameters 'name' and 'hold'. 
 	 * @param name
@@ -54,6 +55,16 @@ public class Room extends GameObject {
 	public void removeItem(String item)
 	{
 		roomInventory.remove(item);
+	}
+	@Override
+	public String toString()
+	{
+		if(description2 == null || description2.equals(""))
+			description2 = description;
+		if(isFirst == true)
+			return description;
+		else
+			return description2;
 	}
 
 }
