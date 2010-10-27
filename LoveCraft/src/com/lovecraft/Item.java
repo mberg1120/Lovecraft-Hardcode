@@ -5,11 +5,8 @@ package com.lovecraft;
  * @comments Creates an item for future use by the user or the room.
  */
 
-public class Item {
+public class Item extends GameObject {
 
-	String itemName;
-	String itemDescription;
-	String holder;
 	String floorDescription ;
 	/**
 	 * Saves the item, and gives it a physical description. 
@@ -18,8 +15,8 @@ public class Item {
 	 */
 	public Item(String name, String desc)
 	{
-		itemName = name;
-		itemDescription = desc;
+		objectName = name;
+		description = desc;
 		floorDescription = "There is a " + name + " on the ground.";
 	}
 }

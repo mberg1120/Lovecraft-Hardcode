@@ -49,14 +49,14 @@ public class XMLReader {
 				NodeList fstNmElmntLst = fstElmnt.getElementsByTagName("name");
 				Element fstNmElmnt = (Element) fstNmElmntLst.item(0);
 				NodeList fstNm = fstNmElmnt.getChildNodes();     
-				String itemName = ((Node) fstNm.item(0)).getNodeValue();
+				String objectName = ((Node) fstNm.item(0)).getNodeValue();
 
 				fstNmElmntLst = fstElmnt.getElementsByTagName("desc");
 				fstNmElmnt = (Element) fstNmElmntLst.item(0);
 				fstNm = fstNmElmnt.getChildNodes();     
 				holder2 += ((Node) fstNm.item(0)).getNodeValue();
 				
-				itemList.add(new Item(itemName, holder2));
+				itemList.add(new Item(objectName, holder2));
 			}
 		}
 		}catch (Exception e) {
@@ -239,30 +239,30 @@ public class XMLReader {
 	{
 		for(int i=0; i < roomList.size(); i++)
 		{
-			if(roomList.get(i).Name.equals(roomName))
+			if(roomList.get(i).objectName.equals(roomName))
 				return roomList.get(i);
 		}
 		System.out.println("XMLReader->getRoomByName: error XML specified room " + roomName +" but it was not found");
 		return null;
 	}
-	// returns a new item containing the name of the item specified
+	// returns a new item containing the objectName of the item specified
 	/**
 	 * Gets the item from the ArrayList and returns a new item. 
 	 */
-	public static Item getItemByName(String itemName)
+	public static Item getItemByName(String objectName)
 	{
 		for(int i = 0; i < itemList.size(); i++)
 		{
-			if(itemList.get(i).itemName.equals(itemName))
-				return new Item(itemList.get(i).itemName, itemList.get(i).itemDescription);
+			if(itemList.get(i).objectName.equals(objectName))
+				return new Item(itemList.get(i).objectName, itemList.get(i).description);
 		}
 		
 //		for(int i=0; i < itemList.size(); i++)
 //		{
-//			if(itemList.get(i).itemName.equals(itemName))
-//				return new Item(itemList.get(i).itemName,itemList.get(i).holder, itemList.get(i).itemDescription);
+//			if(itemList.get(i).objectName.equals(objectName))
+//				return new Item(itemList.get(i).objectName,itemList.get(i).holder, itemList.get(i).itemDescription);
 //		}
-		System.out.println("XMLReader->getItemByName: error XML specified item " + itemName +" but it was not found");
+		System.out.println("XMLReader->getItemByName: error XML specified item " + objectName +" but it was not found");
 		return null;
 	}
 	

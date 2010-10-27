@@ -120,16 +120,16 @@ public class Client
 				if(operand.equals("room"))
 					System.out.println(currentRoom.description);
 				else if (ourPlayer.playerInventory.contains(operand))
-					System.out.println(ourPlayer.playerInventory.getItemFromName(operand).itemDescription);
+					System.out.println(ourPlayer.playerInventory.getItemFromName(operand).description);
 				else
-					System.out.println("You may only look at items in your inventory. Or the room.");
+					System.out.println("You may only look at items in your roomInventory. Or the room.");
 			}
 			else if (command.equals("use"))
 			{
 				use(operand);
 			}		
-			//This will open up the user's inventory if they type in the correctt command.
-			else if (command.equals("i") || command.equals("inventory"))
+			//This will open up the user's roomInventory if they type in the correctt command.
+			else if (command.equals("i") || command.equals("roomInventory"))
 			{
 				ourPlayer.playerInventory.inventoryContents();
 			}
@@ -143,7 +143,7 @@ public class Client
 				System.out.println("Please read the command list");
 				printMenu();
 			}	
-			if(currentRoom.Name.equals("Final"))
+			if(currentRoom.objectName.equals("Final"))
 				keepGoing = false;
 			}while(keepGoing == true);
 		// Prints the end dialogue
@@ -180,7 +180,7 @@ public class Client
 		System.out.println("\nSupported commands:" +
 		"\n-go north/east/south/west: travel one room in the specified direction, watch for holes!" +
 		"\n-take * : pick-up an item" +
-		"\n-i or inventory: shows the items in your inventory" +
+		"\n-i or roomInventory: shows the items in your roomInventory" +
 		"\n-drop * : drop an item" +
 		"\n-use * : use an item");
 	}
@@ -188,23 +188,23 @@ public class Client
 	 * Allows the user to move, and will print out
 	 * if the user can't go that way.
 	 * @param direction
-	 * @param name
+	 * @param objectName
 	 */
-	public static void move(Room direction, String name)
+	public static void move(Room direction, String objectName)
 	{
-		if(direction.Name.equals("Chasm"))
+		if(direction.objectName.equals("Chasm"))
 		{
 			Chasm.fallIntoChasm(scan);
 		}
-		else if(direction.Name.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
+		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
 		{
 			currentRoom = direction;
 		}
-		else if(direction.Name.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
-			System.out.println("You do not have a Skeleton Key in your inventory.");
+		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
+			System.out.println("You do not have a Skeleton Key in your roomInventory.");
 		else if (direction == null || direction == currentRoom)
 		{
-			System.out.println("You can't go " + name + "!");
+			System.out.println("You can't go " + objectName + "!");
 		}
 		else if(direction.isLit == false && lamp == true)
 		{
@@ -214,10 +214,10 @@ public class Client
 			currentRoom.roomInventory.inventoryDescriptions();
 			return;
 		}
-		else if(direction.isLit == true && lamp == false && direction.Name.equals("A1")	||
-				direction.isLit == true && lamp == false && direction.Name.equals("A2") ||
-				direction.isLit == true && lamp == false && direction.Name.equals("B1") ||
-				direction.isLit == true && lamp == false && direction.Name.equals("B2") ||
+		else if(direction.isLit == true && lamp == false && direction.objectName.equals("A1")	||
+				direction.isLit == true && lamp == false && direction.objectName.equals("A2") ||
+				direction.isLit == true && lamp == false && direction.objectName.equals("B1") ||
+				direction.isLit == true && lamp == false && direction.objectName.equals("B2") ||
 				direction.isLit == true && lamp == false && direction.roomInventory.contains("lamp"))
 		{
 			currentRoom = direction;
@@ -242,7 +242,7 @@ public class Client
 			else
 			{
 				if(direction == null || direction.equals(currentRoom))
-					System.out.println("You can't go " + name + "!");
+					System.out.println("You can't go " + objectName + "!");
 				else
 				{
 					currentRoom = direction;
@@ -276,7 +276,7 @@ public class Client
 			System.out.println("I'm sorry, but you haven't put any fuel in the lamp, so there is nothing for you to light.");
 		}
 		//This will check if the player uses the word 'lamp' after use, and will check
-		//the player's inventory for all the necessary components to use the lamp
+		//the player's roomInventory for all the necessary components to use the lamp
 		else if (operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") && ourPlayer.playerInventory.contains("fuel")
 				|| operand.equals("lamp") && fuel == true && ourPlayer.playerInventory.contains("match"))
 		{
@@ -288,26 +288,26 @@ public class Client
 			match = true;
 			fuel = true;
 		}
-		//And if none of the necessary components are in the user's inventory, it will say you can't use the lamp.
+		//And if none of the necessary components are in the user's roomInventory, it will say you can't use the lamp.
 		else if (operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") == false && ourPlayer.playerInventory.contains("fuel") 
 				|| operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") && ourPlayer.playerInventory.contains("fuel") == false
 				|| operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") == false && ourPlayer.playerInventory.contains("fuel") == false)
 		{
 			System.out.println("You can't use your lamp without a match and fuel!");
 		}
-		//This will put the fuel in the lamp if the user's inventory contains a lamp.
+		//This will put the fuel in the lamp if the user's roomInventory contains a lamp.
 		else if(operand.equals("fuel") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp"))
 		{
 			fuel = true;
 			System.out.println("You have put the fuel in the lamp.");
 			ourPlayer.playerInventory.remove(operand);
 		}
-		//If the user's inventory does not contain a lamp, it has no where to put the fuel in!
+		//If the user's roomInventory does not contain a lamp, it has no where to put the fuel in!
 		else if(operand.equals("fuel") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp") == false)
 		{
 			System.out.println("You don't have a lamp to put your fuel in!");
 		}
-		//These next statements check if there is a locked door anywhere, and if they have a key in their inventory, 
+		//These next statements check if there is a locked door anywhere, and if they have a key in their roomInventory, 
 		//it will unlock the room and move them into the room
 		else if(operand.equals("key") && currentRoom.south.isLocked && ourPlayer.playerInventory.contains(operand))
 		{
@@ -327,13 +327,13 @@ public class Client
 			currentRoom.roomInventory.inventoryDescriptions();
 		}	
 		//This statement reads in "skeleton key" from the user and opens the final room, if they 
-		//have a skeleton key in their inventory.
+		//have a skeleton key in their roomInventory.
 		else if(operand.equals("skeleton key") && currentRoom.west.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
 			currentRoom = currentRoom.west;
 		//This will tell them they can't go to the final room because they don't have a skeleton key.
 		else if(operand.equals("skeleton key") && currentRoom.west.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
 			System.out.println("You don't have a skeleton key!");
 		else
-			System.out.println("You either can't use that item, or do not have that item, or misspelled the item name.");
+			System.out.println("You either can't use that item, or do not have that item, or misspelled the item objectName.");
 	}
 }

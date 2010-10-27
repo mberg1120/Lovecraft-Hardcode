@@ -35,7 +35,7 @@ public class Inventory {
 	{
 		for(int i=0; i<inventory.size(); i++)
 		{
-			if(inventory.get(i).itemName.equals(objectName))
+			if(inventory.get(i).objectName.equals(objectName))
 				return true; // found an item matching that description!
 		}
 		return false; //we don't have an item by that name
@@ -59,7 +59,7 @@ public class Inventory {
 			System.out.println("Contents of Inventory: ");
 		for (int i = 0; i < inventory.size(); i++) 
 		{
-			System.out.println("-" + inventory.get(i).itemName);
+			System.out.println("-" + inventory.get(i).objectName);
 		}
 	}
 	/**
@@ -82,7 +82,7 @@ public class Inventory {
 	{
 		for(int i = 0; i < inventory.size(); i++)
 		{
-			if(inventory.get(i).itemName.equals(objectName))
+			if(inventory.get(i).objectName.equals(objectName))
 				return inventory.get(i);
 		}
 		System.out.println("Inventory error! We were looking for " + objectName + " but couldn't find it");
