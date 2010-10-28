@@ -6,12 +6,11 @@ import java.util.StringTokenizer;
  * @author Michael
  * @author Steven
  * @author Nathan
- * @version 1.17
- * @comments Totally finished, the only 'edits' that should be done are to the XML documents to make
- * the story seem more relevant.
- * @ToDo Everything works, just change descriptions for keys and when the user 'talks to him/herself'.
+ * @version 1.20
+ * @comments Moved mainly everything to XML.
+ * @ToDo Now just to spoof things up basically.
  *
- *
+ 
  */
 
 public class Client
@@ -53,7 +52,7 @@ public class Client
 			if(match == true && fuel == true && ourPlayer.playerInventory.contains("lamp"))
 				lamp = true;
 			userInput = scan.nextLine();
-			userInput.toLowerCase();
+			userInput = userInput.toLowerCase();
 			tokenz = new StringTokenizer(userInput);
 			while(tokenz.countTokens()==0)
 			{
@@ -107,7 +106,7 @@ public class Client
 				if(ourPlayer.playerInventory.contains(operand))
 				{
 					currentRoom.roomInventory.add(ourPlayer.playerInventory.getItemFromName(operand));
-					ourPlayer.playerInventory.remove((operand));
+					ourPlayer.playerInventory.remove(operand);
 					System.out.println("You have dropped the " + operand + " on the ground.");
 					if(operand.equals("lamp"))
 						lamp = false;
@@ -122,55 +121,58 @@ public class Client
 				else if (ourPlayer.playerInventory.contains(operand))
 					System.out.println(ourPlayer.playerInventory.getItemFromName(operand).description);
 				else
-					System.out.println("You may only look at items in your roomInventory. Or the room.");
+					System.out.println("You may only look at items in your Inventory. Or the room.");
 			}
 			else if (command.equals("use"))
 			{
 				use(operand);
 			}		
-			//This will open up the user's roomInventory if they type in the correctt command.
-			else if (command.equals("i") || command.equals("roomInventory"))
+			//This will open up the user's Inventory if they type in the correct command.
+			else if (command.equals("i") || command.equals("inventory"))
 			{
 				ourPlayer.playerInventory.inventoryContents();
 			}
-			else if (command.equals("command") || command.equals("commands") || command.equals("c"))
+			//This will print out the command list / command menu
+			else if (command.equals("command") || command.equals("commands") || command.equals("c") || command.equals("menu"))
 			{
 				printMenu();
 			}
+			//Will allow the user to escape if they're in the final room, otherwise they return to the cave.
+			else if(currentRoom.objectName.equals("Final") && command.equals("y") ||
+					currentRoom.objectName.equals("Final") && command.equals("yes"))
+			{
+				keepGoing = false;
+				currentRoom = currentRoom.west;
+			}
+			else if(currentRoom.objectName.equals("Final") && !command.equals("y") ||
+					currentRoom.objectName.equals("Final") && !command.equals("yes"))
+			{
+				currentRoom = currentRoom.east;
+				System.out.println("You have returned back to the cave in the room you were previously in." +
+						"\nIf you wish to make your escape, return back to this room.");
+			}
+			else if(command.equals("up") && operand.equals("up down down left right left right b a start."))
+			{
+				System.out.println("Preston Lee has appeared out of no where... He has shining armor that glows as if he is the sun itself." +
+						"\nYou pull sunglasses out of your back pocket and put them on. His overwhelming glow is too much for your eyes." +
+						"\nHe hands you a paper and says \"Nice work\"" +
+						"\nPaper has been added to your inventory.");
+
+				ourPlayer.playerInventory.add(currentRoom.roomInventory.getItemFromName("paper"));
+				currentRoom.roomInventory.remove("paper");
+			}
+				
 			//If they don't type anything out, it will print out the full command list.
 			else
 			{
 				System.out.println("Please read the command list");
 				printMenu();
 			}	
-			if(currentRoom.objectName.equals("Final"))
-				keepGoing = false;
+
+					
 			}while(keepGoing == true);
-		// Prints the end dialogue
-		System.out.println("As you open the door... It seems to be that you're at the beginning of a Cave looking out. There also\n" +
-				"seems to be a park, how convenient. You don't recognize any of your surroundings. Hell, you can't\n" +
-				"remember anything about yourself, let alone what you are, so there is no reason for any of your\n" +
-				"surroundings to be known. Though, you see someone coming. If you are to make your escape, you'll\n" +
-				"need to take out any eye witnesses. You bludgeon him in the back of the head with your wooden object\n" +
-				"and put him in the cave.\n\n Do you wish to make your escape?");
-		// Allows the user to read the above message, and will print out the end credits once they escape.
-		do
-		{
-			userInput = scan.nextLine();
-			userInput.toLowerCase();
-			keepGoing = true;
-			if(userInput.equals("yes") || userInput.equals("y") || userInput.equals("escape"))
-			{
-				System.out.println("Congratulations, You beat Project LoveCraft!\n" +
-						"Designed, Written, and Coded By:\n" +
-						"Steven Honda\n" +
-						"Michael Berg\n" +
-						"Nathan Secrist");
-				keepGoing = false;
-			}
-			else
-				System.out.println("To escape, type 'yes' 'y' or 'escape'.");
-			}while(keepGoing == true);
+			// This will print out the end credits once the user escapes.
+			System.out.println(currentRoom.toString());
 		}
 	/**
 	 * Prints the command menu to the user.
@@ -180,7 +182,7 @@ public class Client
 		System.out.println("\nSupported commands:" +
 		"\n-go north/east/south/west: travel one room in the specified direction, watch for holes!" +
 		"\n-take * : pick-up an item" +
-		"\n-i or roomInventory: shows the items in your roomInventory" +
+		"\n-i or inventory: shows the items in your Inventory" +
 		"\n-drop * : drop an item" +
 		"\n-use * : use an item");
 	}
@@ -192,27 +194,9 @@ public class Client
 	 */
 	public static void move(Room direction, String objectName)
 	{
-		if(direction.objectName.equals("Chasm"))
+		if(direction.isLit == false && lamp == true)
 		{
-			Chasm.fallIntoChasm(scan);
-		}
-		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
-		{
-			currentRoom = direction;
-		}
-		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
-			System.out.println("You do not have a Skeleton Key in your roomInventory.");
-		else if (direction == null || direction == currentRoom)
-		{
-			System.out.println("You can't go " + objectName + "!");
-		}
-		else if(direction.isLit == false && lamp == true)
-		{
-			direction.isLit = true;		
-			currentRoom = direction;
-			System.out.println(currentRoom.toString());
-			currentRoom.roomInventory.inventoryDescriptions();
-			return;
+			direction.isLit = true;
 		}
 		else if(direction.isLit == true && lamp == false && direction.objectName.equals("A1")	||
 				direction.isLit == true && lamp == false && direction.objectName.equals("A2") ||
@@ -227,6 +211,30 @@ public class Client
 		}
 		else if (direction.isLit == true && lamp == false)
 			direction.isLit = false;
+		if(direction.objectName.equals("Chasm"))
+		{
+			Chasm.fallIntoChasm(scan);
+		}
+		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
+		{
+			currentRoom = direction;
+			System.out.println(currentRoom.toString());
+			currentRoom.roomInventory.inventoryDescriptions();
+		}
+		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
+			System.out.println("You do not have a Skeleton Key in your Inventory.");
+		else if (direction == null || direction == currentRoom)
+		{
+			System.out.println("You attempted to go " + objectName + " but you have run into a wall." +
+					"\nYou have fallen backwards and hit your head." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\nYou awake several hours later dazed and confused.");
+		}
 		else if(direction.isLit)
 		{
 			if(direction.isLocked && ourPlayer.playerInventory.contains("key") == false)
@@ -235,6 +243,7 @@ public class Client
 			{
 				direction.isLocked = false;
 				currentRoom = direction;
+				System.out.println("You have unlocked the door moved into the Room.");
 				ourPlayer.playerInventory.remove("key");
 				System.out.println(currentRoom.toString());
 				currentRoom.roomInventory.inventoryDescriptions();
@@ -252,7 +261,7 @@ public class Client
 			}
 		}
 		else
-			System.out.println("You can't see where you're going, you may not proceed.");
+			System.out.println("You can't see where you're going without a light source, you may not proceed.");
 	}
 	/**
 	 * Method that allows the user to use different items.
@@ -276,43 +285,44 @@ public class Client
 			System.out.println("I'm sorry, but you haven't put any fuel in the lamp, so there is nothing for you to light.");
 		}
 		//This will check if the player uses the word 'lamp' after use, and will check
-		//the player's roomInventory for all the necessary components to use the lamp
-		else if (operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") && ourPlayer.playerInventory.contains("fuel")
+		//the player's Inventory for all the necessary components to use the lamp
+		else if (operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") && ourPlayer.playerInventory.contains("fuel can")
 				|| operand.equals("lamp") && fuel == true && ourPlayer.playerInventory.contains("match"))
 		{
 			System.out.println("You have put the fuel in the lamp, and used your match to light the lamp." +
 					"\nYou can now see where you're going.");
-			ourPlayer.playerInventory.remove("fuel");
+			ourPlayer.playerInventory.remove("fuel can");
 			ourPlayer.playerInventory.remove("match");
 			lamp = true;
 			match = true;
 			fuel = true;
 		}
-		//And if none of the necessary components are in the user's roomInventory, it will say you can't use the lamp.
+		//And if none of the necessary components are in the user's Inventory, it will say you can't use the lamp.
 		else if (operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") == false && ourPlayer.playerInventory.contains("fuel") 
 				|| operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") && ourPlayer.playerInventory.contains("fuel") == false
 				|| operand.equals("lamp") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("match") == false && ourPlayer.playerInventory.contains("fuel") == false)
 		{
 			System.out.println("You can't use your lamp without a match and fuel!");
 		}
-		//This will put the fuel in the lamp if the user's roomInventory contains a lamp.
-		else if(operand.equals("fuel") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp"))
+		//This will put the fuel in the lamp if the user's Inventory contains a lamp.
+		else if(operand.equals("fuel can") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp"))
 		{
 			fuel = true;
 			System.out.println("You have put the fuel in the lamp.");
 			ourPlayer.playerInventory.remove(operand);
 		}
-		//If the user's roomInventory does not contain a lamp, it has no where to put the fuel in!
-		else if(operand.equals("fuel") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp") == false)
+		//If the user's Inventory does not contain a lamp, it has no where to put the fuel in!
+		else if(operand.equals("fuel can") && ourPlayer.playerInventory.contains(operand) && ourPlayer.playerInventory.contains("lamp") == false)
 		{
 			System.out.println("You don't have a lamp to put your fuel in!");
 		}
-		//These next statements check if there is a locked door anywhere, and if they have a key in their roomInventory, 
+		//These next statements check if there is a locked door anywhere, and if they have a key in their Inventory, 
 		//it will unlock the room and move them into the room
 		else if(operand.equals("key") && currentRoom.south.isLocked && ourPlayer.playerInventory.contains(operand))
 		{
 			currentRoom.south.isLocked = false;
 			ourPlayer.playerInventory.remove(operand);
+			System.out.println("You have unlocked the door to your South and moved into the Room.");
 			currentRoom = currentRoom.south;
 			System.out.println(currentRoom.toString());
 			currentRoom.roomInventory.inventoryDescriptions();
@@ -322,18 +332,23 @@ public class Client
 		{
 			currentRoom.north.isLocked = false;
 			currentRoom = currentRoom.north;
+			System.out.println("You have unlocked the door to your North and moved into the Room.\n");			
 			ourPlayer.playerInventory.remove(operand);
 			System.out.println(currentRoom.toString());
 			currentRoom.roomInventory.inventoryDescriptions();
 		}	
 		//This statement reads in "skeleton key" from the user and opens the final room, if they 
-		//have a skeleton key in their roomInventory.
-		else if(operand.equals("skeleton key") && currentRoom.west.equals("Final") && ourPlayer.playerInventory.contains("skeleton key"))
+		//have a skeleton key in their Inventory.
+		else if(operand.equals("skeleton key") && currentRoom.west.objectName.equals("Final") && ourPlayer.playerInventory.contains(operand))
+		{
 			currentRoom = currentRoom.west;
+			ourPlayer.playerInventory.remove(operand);
+			System.out.println(currentRoom.toString());
+		}
 		//This will tell them they can't go to the final room because they don't have a skeleton key.
-		else if(operand.equals("skeleton key") && currentRoom.west.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
+		else if(operand.equals("skeleton key") && currentRoom.west.objectName.equals("Final") && ourPlayer.playerInventory.contains(operand) == false)
 			System.out.println("You don't have a skeleton key!");
 		else
-			System.out.println("You either can't use that item, or do not have that item, or misspelled the item objectName.");
+			System.out.println("You either can't use that item, or do not have that item, or misspelled the item name.");
 	}
 }

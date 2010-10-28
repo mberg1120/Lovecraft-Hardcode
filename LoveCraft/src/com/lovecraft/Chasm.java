@@ -26,11 +26,17 @@ public class Chasm {
 			userInput = scan.nextLine();
 			r = r % 2;
 			if( userInput.toLowerCase().contains("diablo"))
-				System.out.println("There is a large roar heard and flames seen in the distance..." +
-						"\nStay a while and listen...");
+			{
+				System.out.println("You, for some reason, make an inverse Pentagram and summon Diablo. Diablo arrives infront of you in full form." +
+						"\nThis was definitely not the best of ideas." +
+						"\nIn one fell swoop, Diablo says some demonic words and burns you alive." +
+						"\nWell, I guess you're... toast..." +
+						"\nYEAAAAAAAAAAAH");
+				System.exit(0);
+			}
 			else if (userInput.toLowerCase().contains("cow"))
-				System.out.println("There is no cow level...");
-
+				System.out.println("There is no cow level... awe :(" +
+						"\nMaybe you should stay a while... and Listen.");
 			else if(r == 0)
 			{
 				System.out.println("You have managed to climb out of the chasm and returned to the Cave." +

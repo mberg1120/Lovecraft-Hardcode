@@ -20,11 +20,15 @@
 		<desc>This is a match. If used with fuel and a lamp, it will light up the cave.</desc>
 	</item>
 	<item>
-		<name>fuel</name>
+		<name>fuel can</name>
 		<desc>This fuel, when used with a lamp and a match, will light up the cave.</desc>
 	</item>
 	<item>
 		<name>relic</name>
 		<desc>This relic mesmorizes you... It has five words on it. "You just lost the game."</desc>
+	</item>
+	<item>
+		<name>paper</name>
+		<desc>This paper appears to be a project that you turned in. \It has a big "A+" on it with a shiny gold star. Congrats!</desc>
 	</item>
 </itemList>
