@@ -287,7 +287,10 @@ public class XMLReader {
 			if(roomList.get(i).objectName.equals(roomName))
 				return roomList.get(i);
 		}
-		System.out.println("XMLReader->getRoomByName: error XML specified room " + roomName +" but it was not found");
+		System.out.println("The room name " + roomName + " could not be parsed." +
+				"\nPlease fix your room.xml file." +
+				"\nThe program will now terminate...");
+		System.exit(0);
 		return null;
 	}
 	// returns a new item containing the objectName of the item specified
