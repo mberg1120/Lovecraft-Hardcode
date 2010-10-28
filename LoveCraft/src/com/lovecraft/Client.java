@@ -151,7 +151,7 @@ public class Client
 				System.out.println("You have returned back to the cave in the room you were previously in." +
 						"\nIf you wish to make your escape, return back to this room.");
 			}
-			else if(command.equals("up") && operand.equals("up down down left right left right b a start"))
+			else if(command.equals("up") && operand.equals("up down down left right left right b a start") && currentRoom.objectName.equals("Start"))
 			{
 				System.out.println("Preston Lee has appeared out of no where... He has shining armor that glows as if he is the sun itself." +
 						"\nYou pull sunglasses out of your back pocket and put them on. His overwhelming glow is too much for your eyes." +
