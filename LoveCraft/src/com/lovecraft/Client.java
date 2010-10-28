@@ -197,6 +197,19 @@ public class Client
 		if(direction.isLit == false && lamp == true)
 		{
 			direction.isLit = true;
+		}		
+		else if (direction == null || direction == currentRoom)
+		{
+			System.out.println("You attempted to go " + objectName + " but you have run into a wall." +
+					"\nYou have fallen backwards and hit your head." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\n." +
+					"\nYou awake several hours later dazed and confused.");
+			return;
 		}
 		else if(direction.isLit == true && lamp == false && direction.objectName.equals("A1")	||
 				direction.isLit == true && lamp == false && direction.objectName.equals("A2") ||
@@ -223,18 +236,6 @@ public class Client
 		}
 		else if(direction.objectName.equals("Final") && ourPlayer.playerInventory.contains("skeleton key") == false)
 			System.out.println("You do not have a Skeleton Key in your Inventory.");
-		else if (direction == null || direction == currentRoom)
-		{
-			System.out.println("You attempted to go " + objectName + " but you have run into a wall." +
-					"\nYou have fallen backwards and hit your head." +
-					"\n." +
-					"\n." +
-					"\n." +
-					"\n." +
-					"\n." +
-					"\n." +
-					"\nYou awake several hours later dazed and confused.");
-		}
 		else if(direction.isLit)
 		{
 			if(direction.isLocked && ourPlayer.playerInventory.contains("key") == false)
