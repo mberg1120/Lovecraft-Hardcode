@@ -6,9 +6,8 @@ import java.util.StringTokenizer;
  * @author Michael
  * @author Steven
  * @author Nathan
- * @version 1.20
- * @comments Moved mainly everything to XML.
- * @ToDo Now just to spoof things up basically.
+ * @version 1.25
+ * @comments Works, time to be sent to Preston.
  *
  
  */
